@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đào Thị Thương</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #image-container {
+            text-align: center;
+        }
+
+        #toolbox {
+            position: fixed;
+            bottom: 20px;
+        }
+        select#image-size {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <div id="image-container">
+        <img id="selected-image" src="" alt="Selected Image" style="display: none;">
+    </div>
+
+    <div id="toolbox">
+        <select id="image-size" onchange="showImage()">
+            <option value="144">144p</option>
+            <option value="360">360p</option>
+            <option value="720">720p</option>
+            <option value="1080">1080p</option>
+        </select>
+    </div>
+
+    <script>
+        var imagePaths = {
+            "144": "https://i.pinimg.com/236x/7a/1b/dd/7a1bddf87a3638d9d411e7127c29318f.jpg",
+            "360": "https://i.pinimg.com/236x/d1/23/6a/d1236a151b0c2fbac56ac48774294eb2.jpg",
+            "720": "https://i.pinimg.com/236x/87/28/d6/8728d6a00550a1cc00d54932be23f7d5.jpg",
+            "1080": "https://i.pinimg.com/736x/62/27/68/622768409bb2d404a134899d51771316.jpg"
+        };
+
+        var imageElement = document.getElementById("selected-image");
+        imageElement.src = imagePaths["144"];
+        imageElement.style.display = "block";
+        function showImage() {
+            var imageSize = document.getElementById("image-size").value;
+            var imageSrc = imagePaths[imageSize];
+            var imageElement = document.getElementById("selected-image");
+            imageElement.src = imageSrc;
+            imageElement.style.display = "block";
+        }
+    </script>
+</body>
+</html>
